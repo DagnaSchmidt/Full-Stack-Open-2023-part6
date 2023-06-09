@@ -29,6 +29,13 @@ const reducer = (state = initialState, action) => {
             }
         });
         return state = newState;
+    }else if(action.type === 'ADD'){
+        const newAnecdote = {
+            content: action.payload.newAnecdote,
+            id: getId(),
+            votes: 0
+        }
+        return state = [...state, newAnecdote];
     }
     console.log('state now: ', state)
     console.log('action', action)
@@ -40,8 +47,15 @@ const reducer = (state = initialState, action) => {
 export const vote = (id) => {
     return {
         type: 'VOTE',
-        payload: { id }
+        payload: {id}
       }
+}
+
+export const createAnecdote = (newAnecdote) => {
+    return {
+        type: 'ADD',
+        payload: {newAnecdote}
+    }
 }
 
 export default reducer;
