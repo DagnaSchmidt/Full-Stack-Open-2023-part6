@@ -5,7 +5,7 @@ import { initialState } from './reducer';
 import counterReducer from './reducer';
 
 const store = createStore(
-    reducer,
+    counterReducer,
     initialState
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
