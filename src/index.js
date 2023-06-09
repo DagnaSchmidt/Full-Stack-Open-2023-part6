@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+
+//UNI-CAFE REDUX
+import App from './unicafe-redux/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
