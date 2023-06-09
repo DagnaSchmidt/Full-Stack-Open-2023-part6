@@ -1,24 +1,16 @@
-import { createStore } from 'redux';
-import { Provider } from "react-redux";
-
-import { initialState } from './reducer';
-import counterReducer from './reducer';
-import Main from './Main';
-
-const store = createStore(
-    counterReducer,
-    initialState
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-
-console.log(store.getState());
-
-function App() {
+function App({store}) {
 
     return (
-        <Provider store={store}>
-            <Main />
-      </Provider>
+      <div>
+        <button onClick={() => store.dispatch({type: 'GOOD'})}>good</button>
+        <button onClick={() => store.dispatch({type: 'OK'})}>ok</button> 
+        <button onClick={() => store.dispatch({type: 'BAD'})}>bad</button>
+        <button onClick={() => store.dispatch({type: 'RESET'})}>reset stats</button>
+
+        <div>good {store.getState().good}</div>
+        <div>ok {store.getState().ok}</div>
+        <div>bad {store.getState().bad}</div>
+      </div>
     );
   }
 

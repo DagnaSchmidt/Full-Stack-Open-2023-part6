@@ -4,7 +4,7 @@ export const initialState = {
     bad: 0
   };
   
-  const counterReducer = (state = initialState, action) => {
+  const reducer = (state = initialState, action) => {
     console.log(action)
     switch (action.type) {
       case 'GOOD':
@@ -21,4 +21,4 @@ export const initialState = {
     }
   };
   
-  export default counterReducer;
+  export default reducer;
