@@ -13,6 +13,8 @@ export const initialState = {
         return {...state, ok: state.ok +1}
       case 'BAD':
         return {...state, bad: state.bad +1}
+    case 'RESET':
+        return state = {good: 0, ok: 0, bad: 0}
       case 'ZERO':
         return state
       default: return state
