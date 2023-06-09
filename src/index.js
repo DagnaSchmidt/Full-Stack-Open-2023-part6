@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 
 //UNI-CAFE REDUX
@@ -23,13 +23,21 @@ import { createStore } from 'redux';
 
 //ANECDOTES
 import App from './anecdotes-redux/App';
-import reducer from './anecdotes-redux/reducer';
+import anecdotesReducer from './anecdotes-redux/reducers/anecdotesReducer';
+import filterReducer from './anecdotes-redux/reducers/filterReducer';
 import { Provider } from 'react-redux';
+
+const reducer = combineReducers({
+    anecdotes: anecdotesReducer,
+    filter: filterReducer
+});
 
 const store = createStore(reducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(store.getState());
 
 const renderApp = () => {root.render(
+    
     <Provider store={store}>
         <App />
     </Provider>
