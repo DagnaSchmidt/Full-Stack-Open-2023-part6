@@ -3,7 +3,6 @@ import Anecdotes from './components/Anecdotes';
 import CreateNew from './components/CreateNew';
 
 function App() {
-
     return (
         <div>
             <Anecdotes />
