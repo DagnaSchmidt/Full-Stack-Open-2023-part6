@@ -1,37 +1,17 @@
-import { createStore } from 'redux';
-import { Provider } from "react-redux";
-
-import { initialState } from './reducer';
-import counterReducer from './reducer';
-
-const store = createStore(
-    reducer,
-    initialState
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-
-
-function App() {
-
-    const good = () => {
-        store.dispatch({
-          type: 'GOOD'
-        })
-      };
+function App({store}) {
 
     return (
-        <Provider store={store}>
-            <div>
-                <button onClick={good}>good</button> 
-                <button>ok</button> 
-                <button>bad</button>
-                <button>reset stats</button>
-                <div>good {store.getState().good}</div>
-                <div>ok</div>
-                <div>bad</div>
-            </div>
-      </Provider>
+      <div>
+        <button onClick={() => store.dispatch({type: 'GOOD'})}>good</button>
+        <button onClick={() => store.dispatch({type: 'OK'})}>ok</button> 
+        <button onClick={() => store.dispatch({type: 'BAD'})}>bad</button>
+        <button onClick={() => store.dispatch({type: 'RESET'})}>reset stats</button>
+
+        <div>good {store.getState().good}</div>
+        <div>ok {store.getState().ok}</div>
+        <div>bad {store.getState().bad}</div>
+      </div>
     );
   }
-  
+
   export default App;
