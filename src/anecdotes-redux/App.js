@@ -5,10 +5,10 @@ import CreateNew from './components/CreateNew';
 function App() {
 
     return (
-            <div>
-                <Anecdotes />
-                <CreateNew />
-            </div>
+        <div>
+            <Anecdotes />
+            <CreateNew />
+        </div>
     )
   }
 
