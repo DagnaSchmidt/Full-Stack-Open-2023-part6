@@ -6,24 +6,42 @@ const anecdotesAtStart = [
     'Premature optimization is the root of all evil.',
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
   ];
-  
-  const getId = () => (100000 * Math.random()).toFixed(0);
-  
-  const asObject = (anecdote) => {
+const getId = () => (100000 * Math.random()).toFixed(0);
+const asObject = (anecdote) => {
     return {
       content: anecdote,
       id: getId(),
       votes: 0
     }
   };
-  
-  export const initialState = anecdotesAtStart.map(asObject);
-  
-  const reducer = (state = initialState, action) => {
+export const initialState = anecdotesAtStart.map(asObject);
+
+const reducer = (state = initialState, action) => {
+    if(action.type === 'VOTE'){
+        const newState = state.map(item => {
+            if(item.id === action.payload.id){
+                return {
+                    ...item,
+                    votes: item.votes + 1
+                }
+            }else{
+                return item;
+            }
+        });
+        return state = newState;
+    }
     console.log('state now: ', state)
     console.log('action', action)
   
     return state
   }
-  
-  export default reducer;
+
+
+export const vote = (id) => {
+    return {
+        type: 'VOTE',
+        payload: { id }
+      }
+}
+
+export default reducer;
