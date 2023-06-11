@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore, combineReducers } from 'redux';
-
 
 //UNI-CAFE REDUX
 // import App from './unicafe-redux/App';
 // import { initialState } from './unicafe-redux/reducer';
+// import {createStore} from 'redux';
 // import reducer from './unicafe-redux/reducer';
 
 // const store = createStore(
@@ -23,21 +22,13 @@ import { createStore, combineReducers } from 'redux';
 
 //ANECDOTES
 import App from './anecdotes-redux/App';
-import anecdotesReducer from './anecdotes-redux/reducers/anecdotesReducer';
-import filterReducer from './anecdotes-redux/reducers/filterReducer';
 import { Provider } from 'react-redux';
+import { store } from './anecdotes-redux/store';
 
-const reducer = combineReducers({
-    anecdotes: anecdotesReducer,
-    filter: filterReducer
-});
-
-const store = createStore(reducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 console.log(store.getState());
 
 const renderApp = () => {root.render(
-    
     <Provider store={store}>
         <App />
     </Provider>
