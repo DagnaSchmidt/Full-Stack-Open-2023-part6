@@ -21,16 +21,30 @@ import ReactDOM from 'react-dom/client';
 
 
 //ANECDOTES
-import App from './anecdotes-redux/App';
-import { Provider } from 'react-redux';
-import { store } from './anecdotes-redux/store';
+// import App from './anecdotes-redux/App';
+// import { Provider } from 'react-redux';
+// import { store } from './anecdotes-redux/store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log(store.getState());
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// console.log(store.getState());
 
-const renderApp = () => {root.render(
-    <Provider store={store}>
+// const renderApp = () => {root.render(
+//     <Provider store={store}>
+//         <App />
+//     </Provider>
+// )};
+// renderApp();
+
+
+
+//ANECDOTES V2
+import App from './anecdotes-v2/App';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <QueryClientProvider client={queryClient}>
         <App />
-    </Provider>
-)};
-renderApp();
+    </QueryClientProvider>
+);
