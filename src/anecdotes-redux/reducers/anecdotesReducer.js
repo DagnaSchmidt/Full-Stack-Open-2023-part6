@@ -1,3 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit';
+
 const anecdotesAtStart = [
     'If it hurts, do it more often',
     'Adding manpower to a late software project makes it later!',
@@ -14,45 +16,37 @@ const asObject = (anecdote) => {
       votes: 0
     }
   };
-export const initialState = anecdotesAtStart.map(asObject);
+const initialState = anecdotesAtStart.map(asObject);
 
-const anecdotesReducer = (state = initialState, action) => {
-    if(action.type === 'VOTE'){
-        const newState = state.map(item => {
-            if(item.id === action.payload.id){
-                return {
-                    ...item,
-                    votes: item.votes + 1
+const anecdotesSlice = createSlice({
+    name: 'anecdotes',
+    initialState: initialState,
+    reducers: {
+        vote(state, action) {
+            const newAnecdotes = state.map(i => {
+                if(i.id === action.payload){
+                    return {
+                        ...i,
+                        votes: i.votes + 1
+                    }
+                }else {
+                    return i;
                 }
-            }else{
-                return item;
+            });
+            const sortedAnecdotes = newAnecdotes.sort((a, b) => a.votes - b.votes).reverse();
+            return sortedAnecdotes;
+        },
+        createAnecdote(state, action) {
+            const newAnecdote = {
+                content: action.payload,
+                id: getId(),
+                votes: 0
             }
-        });
-        return state = newState;
-    }else if(action.type === 'ADD'){
-        const newAnecdote = {
-            content: action.payload.newAnecdote,
-            id: getId(),
-            votes: 0
+            const newState = [...state, newAnecdote];
+            return newState;
         }
-        return state = [...state, newAnecdote];
     }
-    return state
-  }
+});
 
-
-export const vote = (id) => {
-    return {
-        type: 'VOTE',
-        payload: {id}
-      }
-}
-
-export const createAnecdote = (newAnecdote) => {
-    return {
-        type: 'ADD',
-        payload: {newAnecdote}
-    }
-}
-
-export default anecdotesReducer;
+export const { vote, createAnecdote } = anecdotesSlice.actions;
+export default anecdotesSlice.reducer;

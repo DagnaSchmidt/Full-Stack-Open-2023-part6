@@ -4,8 +4,7 @@ import Anecdote from './Anecdote';
 
 const Anecdotes = () => {
     const anecdotes = useSelector(state => state.anecdotes);
-    anecdotes.sort((a, b) => a.votes - b.votes);
-    anecdotes.reverse();
+    console.log(anecdotes);
     const filter = useSelector(state => state.filter);
 
   return (
