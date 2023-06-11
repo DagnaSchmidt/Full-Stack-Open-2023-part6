@@ -10,7 +10,9 @@ const Notification = () => {
       }
 
     const notification = useSelector(state => state.notification);
+
     console.log(notification);
+
     if(notification.length !== 0){
         return (
             <div style={style}>
