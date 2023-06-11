@@ -15,6 +15,12 @@ const AnecdoteForm = () => {
           setTimeout(() => {
             alertDispatch({type: 'CLEAR'})
           }, 5000);
+        },
+        onError: () => {
+          alertDispatch({type: 'ADD', payload: `too short anecdote, must have length 5 or more`});
+          setTimeout(() => {
+            alertDispatch({type: 'CLEAR'})
+          }, 5000);
         }
     });
     const getId = () => (100000 * Math.random()).toFixed(0);
@@ -23,7 +29,6 @@ const AnecdoteForm = () => {
       event.preventDefault()
       const content = event.target.anecdote.value
       event.target.anecdote.value = ''
-      console.log('new anecdote');
       newNoteMutation.mutate({ content: content, id: getId(), votes: 0 });
   }
   
