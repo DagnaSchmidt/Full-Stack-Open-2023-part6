@@ -34,6 +34,11 @@
       "content": "My first anecdote",
       "id": "96167",
       "votes": 0
+    },
+    {
+      "content": "New anecdote test",
+      "id": "6994",
+      "votes": 0
     }
   ]
 }
