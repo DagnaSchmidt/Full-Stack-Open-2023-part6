@@ -11,12 +11,13 @@ const Notification = () => {
 
     const notification = useSelector(state => state.notification);
     console.log(notification);
-
-  return (
-    <div style={style}>
-        {notification}
-    </div>
-  )
+    if(notification.length !== 0){
+        return (
+            <div style={style}>
+                {notification}
+            </div>
+        )
+    }
 }
 
 export default Notification;
