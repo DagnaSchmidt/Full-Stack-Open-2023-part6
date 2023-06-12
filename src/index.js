@@ -38,16 +38,21 @@ import ReactDOM from 'react-dom/client';
 
 
 //ANECDOTES V2
-import App from './anecdotes-v2/App';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ContextProvider } from './anecdotes-v2/context';
+// import App from './anecdotes-v2/App';
+// import { QueryClient, QueryClientProvider } from 'react-query';
+// import { ContextProvider } from './anecdotes-v2/context';
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <QueryClientProvider client={queryClient}>
-        <ContextProvider>
-            <App />
-        </ContextProvider>
-    </QueryClientProvider>
-);
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <QueryClientProvider client={queryClient}>
+//         <ContextProvider>
+//             <App />
+//         </ContextProvider>
+//     </QueryClientProvider>
+// );
+
+
+//ANECDOTES V3
+import App from './anecdotes-v3/App';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
