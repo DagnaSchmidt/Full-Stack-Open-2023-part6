@@ -1,6 +1,5 @@
 Challenges from course: Full-Stack-Open-2023 </br>
 https://fullstackopen.com/en/  </br>
-Part 6 and 7:
 
 Part 6 project:
 - Unicafe (with Redux)
