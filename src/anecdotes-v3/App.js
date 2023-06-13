@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import About from './screens/About';
 import Menu from './components/Menu';
@@ -9,7 +9,10 @@ import Anecdote from './screens/Anecdote';
 import Home from './screens/Home';
 
 const App = () => {
-  const [anecdotes, setAnecdotes] = useState([
+
+    const navigate = useNavigate();
+
+    const [anecdotes, setAnecdotes] = useState([
     {
       content: 'If it hurts, do it more often',
       author: 'Jez Humble',
@@ -24,14 +27,10 @@ const App = () => {
       votes: 0,
       id: 2
     }
-  ])
+  ]);
+  console.log(anecdotes);
 
-  const [notification, setNotification] = useState('')
-
-  const addNew = (anecdote) => {
-    anecdote.id = Math.round(Math.random() * 10000);
-    setAnecdotes(anecdotes.concat(anecdote));
-  }
+  const [notification, setNotification] = useState('');
 
   const anecdoteById = (id) =>
     anecdotes.find(a => a.id === id);
@@ -48,18 +47,21 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <h1>Software anecdotes</h1>
       <Menu />
+      {notification.length !== 0 &&
+        <p>{notification}</p>
+      }
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/anecdotes/:id' element={<Anecdote anecdotes={anecdotes} />} />
         <Route path='/anecdotes' element={<AnecdoteList anecdotes={anecdotes} />} />
         <Route path='/about' element={<About />} />
-        <Route path='/new' element={<CreateNew addNew={addNew} />} />
+        <Route path='/new' element={<CreateNew anecdotes={anecdotes} setAnecdotes={setAnecdotes} setNotification={setNotification} />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </>
   )
 }
 
