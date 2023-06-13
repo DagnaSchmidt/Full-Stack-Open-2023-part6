@@ -11,7 +11,7 @@ const useField = (type) => {
         setValue('');
     }
 
-  return { type, value, onChange, reset }
+  return { rest: { value, onChange, type}, reset }
 }
 
 export default useField;
