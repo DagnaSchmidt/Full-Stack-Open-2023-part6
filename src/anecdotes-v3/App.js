@@ -5,6 +5,8 @@ import About from './screens/About';
 import Menu from './components/Menu';
 import AnecdoteList from './screens/AnecdoteList';
 import CreateNew from './screens/CreateNew';
+import Anecdote from './screens/Anecdote';
+import Home from './screens/Home';
 
 const App = () => {
   const [anecdotes, setAnecdotes] = useState([
@@ -50,7 +52,9 @@ const App = () => {
       <h1>Software anecdotes</h1>
       <Menu />
       <Routes>
-        <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/anecdotes/:id' element={<Anecdote anecdotes={anecdotes} />} />
+        <Route path='/anecdotes' element={<AnecdoteList anecdotes={anecdotes} />} />
         <Route path='/about' element={<About />} />
         <Route path='/new' element={<CreateNew addNew={addNew} />} />
       </Routes>
