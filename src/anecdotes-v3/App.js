@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useMatch } from 'react-router-dom';
 import Footer from './components/Footer';
 import About from './screens/About';
 import Menu from './components/Menu';
@@ -32,6 +32,9 @@ const App = () => {
 
   const [notification, setNotification] = useState('');
 
+  const match = useMatch('anecdotes/:id');
+  const anecdote = match ? anecdotes.find(i => i.id === Number(match.params.id)) : null;
+
   const anecdoteById = (id) =>
     anecdotes.find(a => a.id === id);
 
@@ -55,7 +58,7 @@ const App = () => {
       }
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/anecdotes/:id' element={<Anecdote anecdotes={anecdotes} />} />
+        <Route path='/anecdotes/:id' element={<Anecdote anecdote={anecdote} />} />
         <Route path='/anecdotes' element={<AnecdoteList anecdotes={anecdotes} />} />
         <Route path='/about' element={<About />} />
         <Route path='/new' element={<CreateNew anecdotes={anecdotes} setAnecdotes={setAnecdotes} setNotification={setNotification} />} />
