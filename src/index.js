@@ -59,5 +59,9 @@ import ReactDOM from 'react-dom/client';
 // ReactDOM.createRoot(document.getElementById('root')).render(<BrowserRouter><App /></BrowserRouter>);
 
 //COUNTRIES
-import App from './countries/App';
+// import App from './countries/App';
+// ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+//NOTES AND PERSONS
+import App from './notes-and-persons/App';
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
