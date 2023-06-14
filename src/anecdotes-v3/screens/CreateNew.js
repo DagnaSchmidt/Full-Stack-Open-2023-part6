@@ -23,9 +23,9 @@ const CreateNew = ({setAnecdotes, setNotification, anecdotes}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addNew({
-          content: content.value,
-          author: author.value,
-          info: info.value,
+          content: content.rest.value,
+          author: author.rest.value,
+          info: info.rest.value,
           votes: 0
         });
       };
@@ -36,18 +36,19 @@ const CreateNew = ({setAnecdotes, setNotification, anecdotes}) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input {...content} />
+          <input {...content.rest} />
         </div>
         <div>
           author
-          <input {...author} />
+          <input {...author.rest} />
         </div>
         <div>
           url for more info
-          <input {...info} />
+          <input {...info.rest} />
         </div>
         <button>create</button>
       </form>
+      <button onClick={() => {content.reset(); author.reset(); info.reset()}}>reset</button>
     </div>
   )
 }

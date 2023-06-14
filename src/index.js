@@ -54,6 +54,10 @@ import ReactDOM from 'react-dom/client';
 
 
 //ANECDOTES V3
-import App from './anecdotes-v3/App';
-import { BrowserRouter } from 'react-router-dom';
-ReactDOM.createRoot(document.getElementById('root')).render(<BrowserRouter><App /></BrowserRouter>);
+// import App from './anecdotes-v3/App';
+// import { BrowserRouter } from 'react-router-dom';
+// ReactDOM.createRoot(document.getElementById('root')).render(<BrowserRouter><App /></BrowserRouter>);
+
+//COUNTRIES
+import App from './countries/App';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
