@@ -7,6 +7,8 @@ Part 6 project:
 
 Part 7 projects:
 - Anecdotes (version 3)
+- Countires
+- Notes and Persons
 
 
 </br></br>
